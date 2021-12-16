@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="febfbb3b76f541d6a23b5c93a8f3e0b6" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.BAOHANH" Width="1.5" PointX="11.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.CHITIETHOADONNHAP" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.CHITIETHOADONXUAT" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.HOADONNHAP" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.HOADONXUAT" Width="1.5" PointX="6" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.KHACHHANG" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.LOAIXE" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.NHACUNGCAP" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCUAHANGXEModel.XE" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__BAOHANH__MAKH__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__BAOHANH__MANV__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__BAOHANH__MAXE__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__CHITIETHO__MAHDN__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__CHITIETHOA__MAXE__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK_CTHDX_HDX" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK_CTHDX_XE" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__HOADONNHA__MANCC__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__HOADONNHAP__MANV__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__HOADONXUAT__MAKH__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__HOADONXUAT__MANV__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__XE__MALOAI__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCUAHANGXEModel.FK__XE__MANCC__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QUANLYCUAHANGXEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BAOHANH">
+    <Key>
+      <PropertyRef Name="MABH" />
+    </Key>
+    <Property Name="MABH" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MAXE" Type="varchar" MaxLength="20" />
+    <Property Name="MANV" Type="varchar" MaxLength="20" />
+    <Property Name="MAKH" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="CHITIETHOADONNHAP">
+    <Key>
+      <PropertyRef Name="MAHDN" />
+      <PropertyRef Name="MAXE" />
+    </Key>
+    <Property Name="MAHDN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MAXE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DONGIA" Type="float" Nullable="false" />
+    <Property Name="SOLUONG" Type="int" Nullable="false" />
+    <Property Name="TONGTIEN" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHITIETHOADONXUAT">
+    <Key>
+      <PropertyRef Name="MAHDX" />
+      <PropertyRef Name="MAXE" />
+    </Key>
+    <Property Name="MAHDX" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MAXE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DONGIA" Type="float" Nullable="false" />
+    <Property Name="SOLUONG" Type="int" Nullable="false" />
+    <Property Name="TONGTIEN" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HOADONNHAP">
+    <Key>
+      <PropertyRef Name="MAHDN" />
+    </Key>
+    <Property Name="MAHDN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MANV" Type="varchar" MaxLength="20" />
+    <Property Name="MANCC" Type="varchar" MaxLength="20" />
+    <Property Name="NGAYNHAP" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HOADONXUAT">
+    <Key>
+      <PropertyRef Name="MAHDX" />
+    </Key>
+    <Property Name="MAHDX" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MANV" Type="varchar" MaxLength="20" />
+    <Property Name="MAKH" Type="varchar" MaxLength="20" />
+    <Property Name="NGAYXUAT" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TENKH" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOAIXE">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TENLOAI" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="MANCC" />
+    </Key>
+    <Property Name="MANCC" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TENNCC" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SOLUONG" Type="int" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TENNV" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="NGAYSINH" Type="datetime" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="30" />
+    <Property Name="NGAYLAM" Type="varchar" MaxLength="20" />
+    <Property Name="LUONG" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="XE">
+    <Key>
+      <PropertyRef Name="MAXE" />
+    </Key>
+    <Property Name="MAXE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TENXE" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MALOAI" Type="varchar" MaxLength="20" />
+    <Property Name="MANCC" Type="varchar" MaxLength="20" />
+    <Property Name="SOLUONG" Type="int" Nullable="false" />
+    <Property Name="GIA" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__BAOHANH__MAKH__44FF419A">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="BAOHANH">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BAOHANH__MANV__440B1D61">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="BAOHANH">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BAOHANH__MAXE__4316F928">
+    <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+    <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XE">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="BAOHANH">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETHO__MAHDN__4BAC3F29">
+    <End Role="HOADONNHAP" Type="Self.HOADONNHAP" Multiplicity="1" />
+    <End Role="CHITIETHOADONNHAP" Type="Self.CHITIETHOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADONNHAP">
+        <PropertyRef Name="MAHDN" />
+      </Principal>
+      <Dependent Role="CHITIETHOADONNHAP">
+        <PropertyRef Name="MAHDN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETHOA__MAXE__4CA06362">
+    <End Role="XE" Type="Self.XE" Multiplicity="1" />
+    <End Role="CHITIETHOADONNHAP" Type="Self.CHITIETHOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XE">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="CHITIETHOADONNHAP">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADONNHA__MANCC__48CFD27E">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+    <End Role="HOADONNHAP" Type="Self.HOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="HOADONNHAP">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADONNHAP__MANV__47DBAE45">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="HOADONNHAP" Type="Self.HOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="HOADONNHAP">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADONXUAT__MAKH__5070F446">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="HOADONXUAT" Type="Self.HOADONXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="HOADONXUAT">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADONXUAT__MANV__4F7CD00D">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="HOADONXUAT" Type="Self.HOADONXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="HOADONXUAT">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__XE__MALOAI__3D5E1FD2">
+    <End Role="LOAIXE" Type="Self.LOAIXE" Multiplicity="0..1" />
+    <End Role="XE" Type="Self.XE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIXE">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="XE">
+        <PropertyRef Name="MALOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__XE__MANCC__3E52440B">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+    <End Role="XE" Type="Self.XE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="XE">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHDX_HDX">
+    <End Role="HOADONXUAT" Type="Self.HOADONXUAT" Multiplicity="1" />
+    <End Role="CHITIETHOADONXUAT" Type="Self.CHITIETHOADONXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADONXUAT">
+        <PropertyRef Name="MAHDX" />
+      </Principal>
+      <Dependent Role="CHITIETHOADONXUAT">
+        <PropertyRef Name="MAHDX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHDX_XE">
+    <End Role="XE" Type="Self.XE" Multiplicity="1" />
+    <End Role="CHITIETHOADONXUAT" Type="Self.CHITIETHOADONXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XE">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="CHITIETHOADONXUAT">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QUANLYCUAHANGXEModelStoreContainer">
+    <EntitySet Name="BAOHANH" EntityType="Self.BAOHANH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHITIETHOADONNHAP" EntityType="Self.CHITIETHOADONNHAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHITIETHOADONXUAT" EntityType="Self.CHITIETHOADONXUAT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADONNHAP" EntityType="Self.HOADONNHAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADONXUAT" EntityType="Self.HOADONXUAT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOAIXE" EntityType="Self.LOAIXE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHACUNGCAP" EntityType="Self.NHACUNGCAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XE" EntityType="Self.XE" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BAOHANH__MAKH__44FF419A" Association="Self.FK__BAOHANH__MAKH__44FF419A">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="BAOHANH" EntitySet="BAOHANH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BAOHANH__MANV__440B1D61" Association="Self.FK__BAOHANH__MANV__440B1D61">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="BAOHANH" EntitySet="BAOHANH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BAOHANH__MAXE__4316F928" Association="Self.FK__BAOHANH__MAXE__4316F928">
+      <End Role="XE" EntitySet="XE" />
+      <End Role="BAOHANH" EntitySet="BAOHANH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETHO__MAHDN__4BAC3F29" Association="Self.FK__CHITIETHO__MAHDN__4BAC3F29">
+      <End Role="HOADONNHAP" EntitySet="HOADONNHAP" />
+      <End Role="CHITIETHOADONNHAP" EntitySet="CHITIETHOADONNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETHOA__MAXE__4CA06362" Association="Self.FK__CHITIETHOA__MAXE__4CA06362">
+      <End Role="XE" EntitySet="XE" />
+      <End Role="CHITIETHOADONNHAP" EntitySet="CHITIETHOADONNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADONNHA__MANCC__48CFD27E" Association="Self.FK__HOADONNHA__MANCC__48CFD27E">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
+      <End Role="HOADONNHAP" EntitySet="HOADONNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADONNHAP__MANV__47DBAE45" Association="Self.FK__HOADONNHAP__MANV__47DBAE45">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="HOADONNHAP" EntitySet="HOADONNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADONXUAT__MAKH__5070F446" Association="Self.FK__HOADONXUAT__MAKH__5070F446">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="HOADONXUAT" EntitySet="HOADONXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADONXUAT__MANV__4F7CD00D" Association="Self.FK__HOADONXUAT__MANV__4F7CD00D">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="HOADONXUAT" EntitySet="HOADONXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK__XE__MALOAI__3D5E1FD2" Association="Self.FK__XE__MALOAI__3D5E1FD2">
+      <End Role="LOAIXE" EntitySet="LOAIXE" />
+      <End Role="XE" EntitySet="XE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__XE__MANCC__3E52440B" Association="Self.FK__XE__MANCC__3E52440B">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
+      <End Role="XE" EntitySet="XE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHDX_HDX" Association="Self.FK_CTHDX_HDX">
+      <End Role="HOADONXUAT" EntitySet="HOADONXUAT" />
+      <End Role="CHITIETHOADONXUAT" EntitySet="CHITIETHOADONXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHDX_XE" Association="Self.FK_CTHDX_XE">
+      <End Role="XE" EntitySet="XE" />
+      <End Role="CHITIETHOADONXUAT" EntitySet="CHITIETHOADONXUAT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

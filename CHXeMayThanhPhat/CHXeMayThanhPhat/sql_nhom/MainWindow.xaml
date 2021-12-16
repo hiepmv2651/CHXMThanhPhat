@@ -1,0 +1,270 @@
+﻿<Window x:Class="sql_nhom.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sql_nhom"
+        mc:Ignorable="d"
+         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        
+        xmlns:uc="clr-namespace:sql_nhom.Dang_nhap"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        
+        Name="mainWindow"
+        DataContext="{StaticResource MainVM}"
+        Title="Xin chào Admin" Height="500" Width="725">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=mainWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--menu-->
+            <Grid Grid.Row="0">
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Transparent">
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="2 4 2 4"></Setter>
+                            <Setter Property="Background" Value="LightCyan"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Command="{Binding UnitCommand}" ToolTip="Xe">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Xe" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Motorbike" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="1" Command="{Binding ObjectCommand}" ToolTip="Loại xe">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Loại xe" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Altimeter" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="2" Command="{Binding SuplierCommand}"  ToolTip="Nhà cung cấp">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Nhà cung cấp" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Factory" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="3" Command="{Binding CustomerCommand}" ToolTip="Khách hàng">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Khách hàng" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="HumanHandsup" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="4" Command="{Binding UserCommand}" ToolTip="Nhân viên">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Nhân Viên" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="AccountBox" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="5" Command="{Binding BaohanhCommand}" ToolTip="Bảo hành">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Bảo hành" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="Account" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </Grid>
+
+            <!--main-->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!--Filter-->
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Transparent">
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="2 4 2 4"></Setter>
+                            <Setter Property="Background" Value="SkyBlue"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Command="{Binding InputCommand}" ToolTip="Hóa đơn nhập">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Chi tiết hóa đơn nhập" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="ArrowDownBoldCircleOutline" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="3" Command="{Binding OutputCommand}" ToolTip="Chi tiết hóa đơn xuất">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Chi tiết hóa đơn xuất" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="ArrowUpBoldCircleOutline" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="0" Command="{Binding NhapCommand}" ToolTip="Xe">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Hóa đơn nhập" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="ArrowDownBoldBoxOutline" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="2" Command="{Binding XuatCommand}" ToolTip="Hóa đơn xuất">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBlock Text="Hóa đơn xuất" HorizontalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <materialDesign:PackIcon Width="24" Height="24"  HorizontalAlignment="Center"  Kind="ArrowUpBoldBoxOutline" />
+                            </Grid>
+                        </Grid>
+                    </Button>
+
+                </Grid>
+
+                <!--list-->
+                <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="93*"/>
+                                <ColumnDefinition Width="623*"/>
+                            </Grid.ColumnDefinitions>
+                            
+
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <TextBlock></TextBlock>
+                            <Image Source="C:\Users\HP\Desktop\New folder (2) - Copy - Copy\a.png " Margin="0,-14,0.333,0.667" Stretch="Fill"/>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

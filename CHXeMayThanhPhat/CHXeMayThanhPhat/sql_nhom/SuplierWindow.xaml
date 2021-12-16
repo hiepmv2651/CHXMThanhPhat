@@ -1,0 +1,94 @@
+﻿<Window x:Class="sql_nhom.SuplierWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sql_nhom"
+        mc:Ignorable="d"
+        DataContext="{StaticResource SuplierVM}"
+         xmlns:uc="clr-namespace:sql_nhom.Dang_nhap"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        x:Name="window"
+        
+        Title="Nhà cung cấp" Height="500" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!--các element binding từ selected item-->
+            <materialDesign:Card Grid.Row="0" Margin="5">
+                <WrapPanel Margin="0 0 0 10">
+                    <TextBox Text="{Binding MANCC, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Mã NCC" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding TENNCC, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên nhà cung cấp" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding DIACHI, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Địa chỉ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding SDT, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Điện thoại" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="{Binding SOLUONG, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="5 5 15 5" materialDesign:HintAssist.Hint="Số lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Grid Grid.Column="0">
+                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            materialDesign:HintAssist.Hint="Tìm kiếm"
+                            Text="{Binding Content}"
+                            Margin="8 0 0 0"
+                            VerticalAlignment="Bottom" 
+                            FontSize="15"/>
+                    </Grid>
+                    <Button Command="{Binding SearchCommand}" Content="Tìm kiếm" Margin="5" Width="100"></Button>
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="2" Margin="5">
+                <WrapPanel>
+                    <Button Command="{Binding AddCommand}" Content="Thêm" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding EditCommand}" Content="Sửa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding DeleteCommand}" Content="Xóa" Margin="5" Width="100"></Button>
+                    <Button Command="{Binding DeleteCommand}" Content="Xuất Excel" Margin="5" Width="100"></Button>
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Grid.Row="3" Margin="5" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã NCC" DisplayMemberBinding="{Binding MANCC}"></GridViewColumn>
+                                <GridViewColumn Header="Tên nhà cung cấp" DisplayMemberBinding="{Binding TENNCC}"></GridViewColumn>
+                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DIACHI}"></GridViewColumn>
+                                <GridViewColumn Header="Điện thoại" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
+                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
+
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

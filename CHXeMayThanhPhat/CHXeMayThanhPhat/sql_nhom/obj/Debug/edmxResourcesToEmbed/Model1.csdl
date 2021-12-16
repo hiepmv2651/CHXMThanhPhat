@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QUANLYCUAHANGXEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BAOHANH">
+    <Key>
+      <PropertyRef Name="MABH" />
+    </Key>
+    <Property Name="MABH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAXE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MAKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__BAOHANH__MAKH__44FF419A" FromRole="BAOHANH" ToRole="KHACHHANG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__BAOHANH__MANV__440B1D61" FromRole="BAOHANH" ToRole="NHANVIEN" />
+    <NavigationProperty Name="XE" Relationship="Self.FK__BAOHANH__MAXE__4316F928" FromRole="BAOHANH" ToRole="XE" />
+  </EntityType>
+  <EntityType Name="CHITIETHOADONNHAP">
+    <Key>
+      <PropertyRef Name="MAHDN" />
+      <PropertyRef Name="MAXE" />
+    </Key>
+    <Property Name="MAHDN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAXE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DONGIA" Type="Double" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="TONGTIEN" Type="Double" Nullable="false" />
+    <NavigationProperty Name="HOADONNHAP" Relationship="Self.FK__CHITIETHO__MAHDN__4BAC3F29" FromRole="CHITIETHOADONNHAP" ToRole="HOADONNHAP" />
+    <NavigationProperty Name="XE" Relationship="Self.FK__CHITIETHOA__MAXE__4CA06362" FromRole="CHITIETHOADONNHAP" ToRole="XE" />
+  </EntityType>
+  <EntityType Name="CHITIETHOADONXUAT">
+    <Key>
+      <PropertyRef Name="MAHDX" />
+      <PropertyRef Name="MAXE" />
+    </Key>
+    <Property Name="MAHDX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAXE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DONGIA" Type="Double" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="TONGTIEN" Type="Double" Nullable="false" />
+    <NavigationProperty Name="HOADONXUAT" Relationship="Self.FK_CTHDX_HDX" FromRole="CHITIETHOADONXUAT" ToRole="HOADONXUAT" />
+    <NavigationProperty Name="XE" Relationship="Self.FK_CTHDX_XE" FromRole="CHITIETHOADONXUAT" ToRole="XE" />
+  </EntityType>
+  <EntityType Name="HOADONNHAP">
+    <Key>
+      <PropertyRef Name="MAHDN" />
+    </Key>
+    <Property Name="MAHDN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MANCC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYNHAP" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="CHITIETHOADONNHAPs" Relationship="Self.FK__CHITIETHO__MAHDN__4BAC3F29" FromRole="HOADONNHAP" ToRole="CHITIETHOADONNHAP" />
+    <NavigationProperty Name="NHACUNGCAP" Relationship="Self.FK__HOADONNHA__MANCC__48CFD27E" FromRole="HOADONNHAP" ToRole="NHACUNGCAP" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HOADONNHAP__MANV__47DBAE45" FromRole="HOADONNHAP" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="HOADONXUAT">
+    <Key>
+      <PropertyRef Name="MAHDX" />
+    </Key>
+    <Property Name="MAHDX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MAKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYXUAT" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="CHITIETHOADONXUATs" Relationship="Self.FK_CTHDX_HDX" FromRole="HOADONXUAT" ToRole="CHITIETHOADONXUAT" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Self.FK__HOADONXUAT__MAKH__5070F446" FromRole="HOADONXUAT" ToRole="KHACHHANG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.FK__HOADONXUAT__MANV__4F7CD00D" FromRole="HOADONXUAT" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENKH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__MAKH__44FF419A" FromRole="KHACHHANG" ToRole="BAOHANH" />
+    <NavigationProperty Name="HOADONXUATs" Relationship="Self.FK__HOADONXUAT__MAKH__5070F446" FromRole="KHACHHANG" ToRole="HOADONXUAT" />
+  </EntityType>
+  <EntityType Name="LOAIXE">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENLOAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="XEs" Relationship="Self.FK__XE__MALOAI__3D5E1FD2" FromRole="LOAIXE" ToRole="XE" />
+  </EntityType>
+  <EntityType Name="NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="MANCC" />
+    </Key>
+    <Property Name="MANCC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENNCC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="HOADONNHAPs" Relationship="Self.FK__HOADONNHA__MANCC__48CFD27E" FromRole="NHACUNGCAP" ToRole="HOADONNHAP" />
+    <NavigationProperty Name="XEs" Relationship="Self.FK__XE__MANCC__3E52440B" FromRole="NHACUNGCAP" ToRole="XE" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENNV" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NGAYSINH" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYLAM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LUONG" Type="Double" Nullable="false" />
+    <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__MANV__440B1D61" FromRole="NHANVIEN" ToRole="BAOHANH" />
+    <NavigationProperty Name="HOADONNHAPs" Relationship="Self.FK__HOADONNHAP__MANV__47DBAE45" FromRole="NHANVIEN" ToRole="HOADONNHAP" />
+    <NavigationProperty Name="HOADONXUATs" Relationship="Self.FK__HOADONXUAT__MANV__4F7CD00D" FromRole="NHANVIEN" ToRole="HOADONXUAT" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="XE">
+    <Key>
+      <PropertyRef Name="MAXE" />
+    </Key>
+    <Property Name="MAXE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENXE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MALOAI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MANCC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="GIA" Type="Double" Nullable="false" />
+    <NavigationProperty Name="BAOHANHs" Relationship="Self.FK__BAOHANH__MAXE__4316F928" FromRole="XE" ToRole="BAOHANH" />
+    <NavigationProperty Name="CHITIETHOADONNHAPs" Relationship="Self.FK__CHITIETHOA__MAXE__4CA06362" FromRole="XE" ToRole="CHITIETHOADONNHAP" />
+    <NavigationProperty Name="CHITIETHOADONXUATs" Relationship="Self.FK_CTHDX_XE" FromRole="XE" ToRole="CHITIETHOADONXUAT" />
+    <NavigationProperty Name="LOAIXE" Relationship="Self.FK__XE__MALOAI__3D5E1FD2" FromRole="XE" ToRole="LOAIXE" />
+    <NavigationProperty Name="NHACUNGCAP" Relationship="Self.FK__XE__MANCC__3E52440B" FromRole="XE" ToRole="NHACUNGCAP" />
+  </EntityType>
+  <Association Name="FK__BAOHANH__MAKH__44FF419A">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="BAOHANH">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BAOHANH__MANV__440B1D61">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="BAOHANH">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BAOHANH__MAXE__4316F928">
+    <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+    <End Role="BAOHANH" Type="Self.BAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XE">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="BAOHANH">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETHO__MAHDN__4BAC3F29">
+    <End Role="HOADONNHAP" Type="Self.HOADONNHAP" Multiplicity="1" />
+    <End Role="CHITIETHOADONNHAP" Type="Self.CHITIETHOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADONNHAP">
+        <PropertyRef Name="MAHDN" />
+      </Principal>
+      <Dependent Role="CHITIETHOADONNHAP">
+        <PropertyRef Name="MAHDN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHITIETHOA__MAXE__4CA06362">
+    <End Role="XE" Type="Self.XE" Multiplicity="1" />
+    <End Role="CHITIETHOADONNHAP" Type="Self.CHITIETHOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XE">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="CHITIETHOADONNHAP">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHDX_HDX">
+    <End Role="HOADONXUAT" Type="Self.HOADONXUAT" Multiplicity="1" />
+    <End Role="CHITIETHOADONXUAT" Type="Self.CHITIETHOADONXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADONXUAT">
+        <PropertyRef Name="MAHDX" />
+      </Principal>
+      <Dependent Role="CHITIETHOADONXUAT">
+        <PropertyRef Name="MAHDX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTHDX_XE">
+    <End Role="XE" Type="Self.XE" Multiplicity="1" />
+    <End Role="CHITIETHOADONXUAT" Type="Self.CHITIETHOADONXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XE">
+        <PropertyRef Name="MAXE" />
+      </Principal>
+      <Dependent Role="CHITIETHOADONXUAT">
+        <PropertyRef Name="MAXE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADONNHA__MANCC__48CFD27E">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+    <End Role="HOADONNHAP" Type="Self.HOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="HOADONNHAP">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADONNHAP__MANV__47DBAE45">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="HOADONNHAP" Type="Self.HOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="HOADONNHAP">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADONXUAT__MAKH__5070F446">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="HOADONXUAT" Type="Self.HOADONXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="HOADONXUAT">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADONXUAT__MANV__4F7CD00D">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="HOADONXUAT" Type="Self.HOADONXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="HOADONXUAT">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__XE__MALOAI__3D5E1FD2">
+    <End Role="LOAIXE" Type="Self.LOAIXE" Multiplicity="0..1" />
+    <End Role="XE" Type="Self.XE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIXE">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="XE">
+        <PropertyRef Name="MALOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__XE__MANCC__3E52440B">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+    <End Role="XE" Type="Self.XE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="XE">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QUANLYCUAHANGXEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BAOHANHs" EntityType="Self.BAOHANH" />
+    <EntitySet Name="CHITIETHOADONNHAPs" EntityType="Self.CHITIETHOADONNHAP" />
+    <EntitySet Name="CHITIETHOADONXUATs" EntityType="Self.CHITIETHOADONXUAT" />
+    <EntitySet Name="HOADONNHAPs" EntityType="Self.HOADONNHAP" />
+    <EntitySet Name="HOADONXUATs" EntityType="Self.HOADONXUAT" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="LOAIXEs" EntityType="Self.LOAIXE" />
+    <EntitySet Name="NHACUNGCAPs" EntityType="Self.NHACUNGCAP" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="XEs" EntityType="Self.XE" />
+    <AssociationSet Name="FK__BAOHANH__MAKH__44FF419A" Association="Self.FK__BAOHANH__MAKH__44FF419A">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="BAOHANH" EntitySet="BAOHANHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BAOHANH__MANV__440B1D61" Association="Self.FK__BAOHANH__MANV__440B1D61">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="BAOHANH" EntitySet="BAOHANHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BAOHANH__MAXE__4316F928" Association="Self.FK__BAOHANH__MAXE__4316F928">
+      <End Role="XE" EntitySet="XEs" />
+      <End Role="BAOHANH" EntitySet="BAOHANHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETHO__MAHDN__4BAC3F29" Association="Self.FK__CHITIETHO__MAHDN__4BAC3F29">
+      <End Role="HOADONNHAP" EntitySet="HOADONNHAPs" />
+      <End Role="CHITIETHOADONNHAP" EntitySet="CHITIETHOADONNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHITIETHOA__MAXE__4CA06362" Association="Self.FK__CHITIETHOA__MAXE__4CA06362">
+      <End Role="XE" EntitySet="XEs" />
+      <End Role="CHITIETHOADONNHAP" EntitySet="CHITIETHOADONNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHDX_HDX" Association="Self.FK_CTHDX_HDX">
+      <End Role="HOADONXUAT" EntitySet="HOADONXUATs" />
+      <End Role="CHITIETHOADONXUAT" EntitySet="CHITIETHOADONXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTHDX_XE" Association="Self.FK_CTHDX_XE">
+      <End Role="XE" EntitySet="XEs" />
+      <End Role="CHITIETHOADONXUAT" EntitySet="CHITIETHOADONXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADONNHA__MANCC__48CFD27E" Association="Self.FK__HOADONNHA__MANCC__48CFD27E">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
+      <End Role="HOADONNHAP" EntitySet="HOADONNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADONNHAP__MANV__47DBAE45" Association="Self.FK__HOADONNHAP__MANV__47DBAE45">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="HOADONNHAP" EntitySet="HOADONNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADONXUAT__MAKH__5070F446" Association="Self.FK__HOADONXUAT__MAKH__5070F446">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="HOADONXUAT" EntitySet="HOADONXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADONXUAT__MANV__4F7CD00D" Association="Self.FK__HOADONXUAT__MANV__4F7CD00D">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="HOADONXUAT" EntitySet="HOADONXUATs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__XE__MALOAI__3D5E1FD2" Association="Self.FK__XE__MALOAI__3D5E1FD2">
+      <End Role="LOAIXE" EntitySet="LOAIXEs" />
+      <End Role="XE" EntitySet="XEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__XE__MANCC__3E52440B" Association="Self.FK__XE__MANCC__3E52440B">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
+      <End Role="XE" EntitySet="XEs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
