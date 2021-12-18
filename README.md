@@ -1,4 +1,5 @@
 # CHXMThanhPhat
+Nhóm 2 HQTCSDL
 B1: Cài đặt database: - Chạy file QuanLyCuaHangXeMay.sql  - Execute tạo database, bảng, dữ liệu
 
 B2: Chạy chương trình trên Visual Studio
