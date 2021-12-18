@@ -48,6 +48,11 @@ namespace sql_nhom.ViewModel
                     p.Close();
                    
                 }
+                else
+                {
+                    IsLogin = false;
+                    MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
+                }    
             }
             else
             {

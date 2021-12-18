@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,10 +23,17 @@ namespace sql_nhom
     /// </summary>
     public partial class BaoHanhWindow : Window
     {
+        public ObservableCollection<BAOHANH> List { get; }
+
         public BaoHanhWindow()
         {
             InitializeComponent();
+            List = new ObservableCollection<BAOHANH>(DataProvider.Ins.DB.BAOHANHs);
+            list.ItemsSource = List;
+
+            searchall.ItemsSource = List;
         }
+
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using sql_nhom.Model;
 
@@ -91,14 +92,7 @@ namespace sql_nhom.ViewModel
 
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (SelectedItem == null || SelectedLX == null || SelectedNCC == null)
-                    return false;
-
-                var displayList = DataProvider.Ins.DB.XEs.Where(x => x.MAXE == SelectedItem.MAXE);
-                if (displayList != null && displayList.Count() != 0)
-                    return true;
-
-                return false;
+                return true;
 
             }, (p) =>
             {
@@ -108,6 +102,8 @@ namespace sql_nhom.ViewModel
                 DataProvider.Ins.DB.SaveChanges();
 
                 List.Add(Xe);
+              
+                
             });
             DeleteCommand = new RelayCommand<object>((p) =>
             {

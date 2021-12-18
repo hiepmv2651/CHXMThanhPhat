@@ -25,7 +25,8 @@
         Title="Xin chào Admin" Height="500" Width="725">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"/>
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" 
+                                   CommandParameter="{Binding ElementName=mainWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -259,7 +260,7 @@
                         </Grid>
                         <Grid Grid.Row="2">
                             <TextBlock></TextBlock>
-                            <Image Source="C:\Users\HP\Desktop\New folder (2) - Copy - Copy\a.png " Margin="0,-14,0.333,0.667" Stretch="Fill"/>
+                            <Image Source="C:\Users\HP\Desktop\CHXeMayThanhPhat\a.png " Margin="0,-14,0.333,0.667" Stretch="Fill"/>
                         </Grid>
                     </Grid>
                 </materialDesign:Card>

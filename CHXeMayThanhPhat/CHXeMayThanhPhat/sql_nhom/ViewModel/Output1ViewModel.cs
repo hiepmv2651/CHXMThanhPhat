@@ -6,11 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using sql_nhom.Model;
 using System.Windows.Input;
+using ms = Microsoft.Office.Interop.Excel;
+using System.Windows;
 
 namespace sql_nhom.ViewModel
 {
     public class Output1ViewModel : BaseViewModel
     {
+        
         private ObservableCollection<HOADONXUAT> _List;
         public ObservableCollection<HOADONXUAT> List { get => _List; set { _List = value; OnPropertyChanged(); } }
 
@@ -60,7 +63,17 @@ namespace sql_nhom.ViewModel
             }
         }
 
-
+        private string _selected = "";
+        public string selected
+        {
+            get { return _selected; }
+            set
+            {
+                if (_selected == value) return;
+                _selected = value;
+                base.OnPropertyChanged("selected");
+            }
+        }
 
         private string _MAHDX;
         public string MAHDX { get => _MAHDX; set { _MAHDX = value; OnPropertyChanged(); } }
@@ -72,6 +85,8 @@ namespace sql_nhom.ViewModel
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand TimCommand { get; set; }
+        
 
         public Output1ViewModel()
         {
@@ -81,14 +96,7 @@ namespace sql_nhom.ViewModel
 
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (SelectedItem == null || SelectedKH == null || SelectedNV == null)
-                    return false;
-
-                var displayList = DataProvider.Ins.DB.HOADONXUATs.Where(x => x.MAHDX == SelectedItem.MAHDX);
-                if (displayList != null && displayList.Count() != 0)
-                    return true;
-
-                return false;
+                return true;
 
             }, (p) =>
             {
@@ -136,7 +144,6 @@ namespace sql_nhom.ViewModel
             }, (p) =>
             {
 
-
                 var hoadonxuat = DataProvider.Ins.DB.HOADONXUATs.Where(x => x.MAHDX == SelectedItem.MAHDX).SingleOrDefault();
                 hoadonxuat.MAHDX = MAHDX;
                 hoadonxuat.NGAYXUAT = NGAYXUAT;
@@ -145,6 +152,18 @@ namespace sql_nhom.ViewModel
                 DataProvider.Ins.DB.SaveChanges();
 
                 SelectedItem.MAHDX = MAHDX;
+            });
+           
+
+            TimCommand = new RelayCommand<object>((p) =>
+            {
+                return true;
+
+            }, (p) =>
+            {
+                
+
+
             });
         }
     }

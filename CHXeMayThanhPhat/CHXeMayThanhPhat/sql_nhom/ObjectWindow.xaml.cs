@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using sql_nhom.Model;
 
 namespace sql_nhom
 {
@@ -21,7 +23,13 @@ namespace sql_nhom
     {
         public ObjectWindow()
         {
+            //List = new ObservableCollection<LOAIXE>(DataProvider.Ins.DB.LOAIXEs);
             InitializeComponent();
+            //list.ItemsSource = List;
+
+            //searchall.ItemsSource = List;
         }
+
+        //public ObservableCollection<LOAIXE> List { get; }
     }
 }

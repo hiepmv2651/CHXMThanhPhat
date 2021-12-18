@@ -16,9 +16,7 @@ namespace sql_nhom.ViewModel
 {
     public class BaoHanhViewModel : BaseViewModel 
     {
-        private ObservableCollection<excel> _ex;
-        public ObservableCollection<excel> ex { get => _ex; set { _ex = value; OnPropertyChanged(); } }
-
+        
         private ObservableCollection<BAOHANH> _List;
         public ObservableCollection<BAOHANH> List { get => _List; set { _List = value; OnPropertyChanged(); } }
 
@@ -113,14 +111,7 @@ namespace sql_nhom.ViewModel
 
             AddCommand = new RelayCommand<object>((p) =>
             {
-                if (SelectedItem == null || SelectedXE == null || SelectedNV == null || SelectedKH == null)
-                    return false;
-
-                var displayList = DataProvider.Ins.DB.BAOHANHs.Where(x => x.MABH == SelectedItem.MABH);
-                if (displayList != null && displayList.Count() != 0)
-                    return true;
-
-                return false;
+                return true;
 
             }, (p) =>
             {

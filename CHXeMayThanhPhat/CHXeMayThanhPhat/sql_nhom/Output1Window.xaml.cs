@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using sql_nhom.Model;
 
 namespace sql_nhom
 {
@@ -22,6 +24,23 @@ namespace sql_nhom
         public Output1Window()
         {
             InitializeComponent();
+            List = new ObservableCollection<HOADONXUAT>(DataProvider.Ins.DB.HOADONXUATs);
+            list.ItemsSource = List;
+
+            searchall.ItemsSource = List;
+
+        }
+
+        public ObservableCollection<HOADONXUAT> List { get; }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
     }
 }
